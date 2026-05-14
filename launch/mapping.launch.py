@@ -21,17 +21,22 @@ def generate_launch_description():
     config_file = LaunchConfiguration('config_file')
     rviz_use = LaunchConfiguration('rviz')
     rviz_cfg = LaunchConfiguration('rviz_cfg')
+    namespace = LaunchConfiguration('namespace')
 
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         'use_sim_time', default_value='false',
         description='Use simulation (Gazebo) clock if true'
+    )
+    declare_namespace_cmd = DeclareLaunchArgument(
+        'namespace', default_value='',
+        description='Namespace for the nodes'
     )
     declare_config_path_cmd = DeclareLaunchArgument(
         'config_path', default_value=default_config_path,
         description='Yaml config file path'
     )
     declare_config_file_cmd = DeclareLaunchArgument(
-        'config_file', default_value='mid360.yaml',
+        'config_file', default_value='mid360_agi.yaml',
         description='Config file'
     )
     declare_rviz_cmd = DeclareLaunchArgument(
@@ -46,6 +51,7 @@ def generate_launch_description():
     fast_lio_node = Node(
         package='fast_lio',
         executable='fastlio_mapping',
+        namespace=namespace,
         parameters=[PathJoinSubstitution([config_path, config_file]),
                     {'use_sim_time': use_sim_time}],
         output='screen'
@@ -53,12 +59,14 @@ def generate_launch_description():
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
+        namespace=namespace,
         arguments=['-d', rviz_cfg],
         condition=IfCondition(rviz_use)
     )
 
     ld = LaunchDescription()
     ld.add_action(declare_use_sim_time_cmd)
+    ld.add_action(declare_namespace_cmd)
     ld.add_action(declare_config_path_cmd)
     ld.add_action(declare_config_file_cmd)
     ld.add_action(declare_rviz_cmd)

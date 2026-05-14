@@ -34,9 +34,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        body:
+        drone0/lio_base_link:
           Value: true
-        camera_init:
+        drone0/map:
           Value: true
       Marker Scale: 1
       Name: TF
@@ -44,8 +44,8 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
-        camera_init:
-          body:
+        drone0/map:
+          drone0/lio_base_link:
             {}
       Update Interval: 0
       Value: true
@@ -86,7 +86,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /Odometry
+        Value: fast_lio/Odometry
       Value: true
     - Alpha: 1
       Buffer Length: 1
@@ -114,7 +114,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /path
+        Value: fast_lio/path
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
@@ -146,7 +146,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /cloud_registered
+        Value: fast_lio/cloud_registered
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -180,7 +180,7 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /cloud_effected
+        Value: fast_lio/cloud_effected
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -214,14 +214,14 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /Laser_map
+        Value: fast_lio/Laser_map
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
-    Fixed Frame: camera_init
+    Fixed Frame: drone0/map
     Frame Rate: 30
   Name: root
   Tools:
