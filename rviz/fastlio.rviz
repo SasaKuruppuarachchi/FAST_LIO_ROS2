@@ -34,7 +34,7 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        drone0/lio_base_link:
+        drone0/base_link:
           Value: true
         drone0/map:
           Value: true
@@ -45,7 +45,7 @@ Visualization Manager:
       Show Names: false
       Tree:
         drone0/map:
-          drone0/lio_base_link:
+          drone0/base_link:
             {}
       Update Interval: 0
       Value: true
