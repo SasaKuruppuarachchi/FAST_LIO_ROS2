@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../../../agipix_control/src/agipix_autonomy"
+		},
+		{
+			"path": "../../../../agipix_control/src/agipix_user_interfaces"
+		},
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../LiDAR_IMU_Init_ROS2"
+		}
+	],
+	"settings": {}
+}
