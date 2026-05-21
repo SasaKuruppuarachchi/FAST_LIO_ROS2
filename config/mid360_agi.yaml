@@ -41,7 +41,7 @@
 
         publish:
             path_en: true                # true: publish Path
-            tf_en: false                 # true: publish TF for body_frame and imu_body_frame (debug)
+            tf_en: true                 # true: publish TF for body_frame and imu_body_frame (debug)
             effect_map_en: false         # true: publish Effects
             map_en: true                 # true: publish Map cloud
             scan_publish_en:  true       # false: close all the point cloud output
