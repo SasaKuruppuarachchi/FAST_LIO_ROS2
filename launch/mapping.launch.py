@@ -4,7 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument
-from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution, PythonExpression
 from launch.conditions import IfCondition
 
 from launch_ros.actions import Node
@@ -36,7 +36,10 @@ def generate_launch_description():
         description='Yaml config file path'
     )
     declare_config_file_cmd = DeclareLaunchArgument(
-        'config_file', default_value='mid360_agi.yaml',
+        'config_file', default_value=PythonExpression([
+            "'mid360_agi_sw.yaml' if '", use_sim_time,
+            "' == 'true' else 'mid360_agi_hw.yaml'"
+        ]),
         description='Config file'
     )
     declare_rviz_cmd = DeclareLaunchArgument(

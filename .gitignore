@@ -13,3 +13,4 @@ PCD/*.pcd
 .guides/
 ideas/
 .vscode/
+*.pyc
