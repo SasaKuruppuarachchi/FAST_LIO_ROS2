@@ -797,8 +797,14 @@ void publish_path(rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr pubPath)
     msg_body_pose.header.frame_id = world_frame;
 
     /*** if path is too large, the rvis will crash ***/
-    path.poses.push_back(msg_body_pose);
-    pubPath->publish(path);
+    static int jjj = 0;
+    jjj++;
+    if (jjj % 5 == 0) 
+    {
+
+        path.poses.push_back(msg_body_pose);
+        pubPath->publish(path);
+    }
 }
 
 void h_share_model(state_ikfom &s, esekfom::dyn_share_datastruct<double> &ekfom_data)
